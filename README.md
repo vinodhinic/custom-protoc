@@ -98,8 +98,8 @@ Note that the protoc retains the insertion points so that you can chain any numb
     ```
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.foo.protoPackage.TestPizzaOrder)
-        com.foo.protoPackage.ManyMessagesWithProtoPackage.TestPizzaOrderOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.foo.protoPackage.TestOrderPrice)
+        com.foo.protoPackage.ManyMessagesWithProtoPackage.TestOrderPriceOrBuilder {
     
         //**********************************AUTO_GENERATED************************
         public Builder setBigDecimalOriginalPrice(@javax.annotation.Nonnull java.math.BigDecimal value) {
