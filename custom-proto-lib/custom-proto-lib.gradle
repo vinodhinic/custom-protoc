@@ -1,8 +1,10 @@
 dependencies {
     // Compile all the protos in proto-lib module, using the protoc compiler present below (which is where we use the custom-protoc-plugin)
     protobuf project(path: ':proto-lib', configuration: 'protofiles')
-    implementation project(':proto-lib')
+
     // required for KafkaEvent interface. Also the annotation and type protos are referred by the protos added at the test protos.
+    implementation project(':proto-lib')
+
     testProtobuf project(path: ':proto-lib', configuration: 'protofiles')
 }
 
