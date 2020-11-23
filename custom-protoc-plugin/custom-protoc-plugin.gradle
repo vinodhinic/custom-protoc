@@ -1,7 +1,8 @@
 apply plugin: 'application'
 
 dependencies {
-    implementation project(':proto-lib') // only imports the proto files from proto-lib. we need those option protos and custom type protos in this module.
+    implementation project(':proto-lib')
+    // only imports the proto files from proto-lib. we need those option protos and custom type protos in this module.
 }
 
 application {

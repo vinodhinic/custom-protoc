@@ -3,13 +3,13 @@
 package com.foo.proto
 
 
-import com.google.common.io.ByteStreams
-import com.google.protobuf.ExtensionRegistry
-import com.google.protobuf.compiler.PluginProtos
 import com.foo.proto.accessor.AccessCodeGens
 import com.foo.proto.codegen.FooOptions
 import com.foo.proto.extender.ExtensionCodeGens
 import com.foo.proto.implementor.ImplementsKafkaEventCodeGenerator
+import com.google.common.io.ByteStreams
+import com.google.protobuf.ExtensionRegistry
+import com.google.protobuf.compiler.PluginProtos
 import java.io.IOException
 import kotlin.system.exitProcess
 

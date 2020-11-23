@@ -2,15 +2,6 @@ apply plugin: 'com.google.protobuf'
 
 protobuf {
     protoc { artifact = "com.google.protobuf:protoc:${protocVersion}" }
-    plugins {
-        grpc { artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}" }
-    }
-
-    generateProtoTasks {
-        all()*.plugins {
-            grpc {}
-        }
-    }
 }
 
 configurations {

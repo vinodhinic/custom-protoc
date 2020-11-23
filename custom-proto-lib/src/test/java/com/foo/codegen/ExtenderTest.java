@@ -3,7 +3,6 @@ package com.foo.codegen;
 import com.foo.types.LocalDateProto;
 import org.junit.jupiter.api.Test;
 
-
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

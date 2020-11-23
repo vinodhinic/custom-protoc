@@ -171,6 +171,9 @@ Test cases for the same can be found at :
 - [Extension functions](custom-proto-lib/src/test/java/com/foo/codegen/ExtenderTest.java)
 - [Interfaces](custom-proto-lib/src/test/java/com/foo/codegen/ImplementorTest.java)
 
+Here I chose to expose few accessors by default - eg: `com.google.Timestamp` to `java.time.Instant`, foo.LocalDate to `java.time.LocalDate` - because I wanted to avoid the .proto files getting too verbose with too many annotations. 
+However I cannot do this for string-to-bigDecimal cases since not all strings can be converted to `java.math.BigDecimal` by default.
+ 
 ## Gradle plugin 
 Now if you compare the protobuf gradle plugin at [proto-lib](/proto-lib/proto-lib.gradle) and the one at [custom-proto-lib](custom-proto-lib/custom-proto-lib.gradle), you would be able to relate.
 
