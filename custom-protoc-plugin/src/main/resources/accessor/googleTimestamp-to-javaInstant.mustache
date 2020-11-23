@@ -1,0 +1,13 @@
+
+private java.time.Instant {{auxField}} = null;
+public @javax.annotation.Nonnull java.time.Instant {{auxGetter}}() {
+    if({{auxField}} == null) {
+        {{auxField}} = java.time.Instant.ofEpochSecond({{parentGetter}}().getSeconds(),
+        {{parentGetter}}().getNanos());
+    }
+    return {{auxField}};
+}
+
+public boolean {{auxHas}}() {
+    return {{parentHas}}();
+}

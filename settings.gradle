@@ -1,0 +1,11 @@
+rootProject.name = 'custom-protoc'
+
+include 'proto-lib'
+include 'custom-protoc-plugin'
+include 'custom-proto-lib'
+
+rootProject.children.each { subproject ->
+    subproject.buildFileName = "${subproject.name}.gradle"
+}
+
+

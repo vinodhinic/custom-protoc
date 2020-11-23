@@ -1,0 +1,20 @@
+apply plugin: 'application'
+
+dependencies {
+    implementation project(':proto-lib') // only imports the proto files from proto-lib. we need those option protos and custom type protos in this module.
+}
+
+application {
+    mainClassName = 'com.foo.proto.CustomCodeGen'
+}
+
+tasks.withType(CreateStartScripts).each { task ->
+    task.doLast {
+        // to handle the "input too long error" while executing the build in a windows machine
+        String text = task.windowsScript.text
+        text = text.replaceFirst(/(set CLASSPATH=%APP_HOME%\\lib\\).*/, { "${it[1]}*" })
+        task.windowsScript.write text
+    }
+}
+
+build.dependsOn installDist

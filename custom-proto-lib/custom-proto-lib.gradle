@@ -1,0 +1,31 @@
+dependencies {
+    // Compile all the protos in proto-lib module, using the protoc compiler present below (which is where we use the custom-protoc-plugin)
+    protobuf project(path: ':proto-lib', configuration: 'protofiles')
+    implementation project(':proto-lib') // required for KafkaEvent interface. Also the annotation and type protos are referred by the protos added at the test protos.
+    testProtobuf project(path : ':proto-lib', configuration: 'protofiles')
+}
+
+protobuf {
+    protoc { artifact = "com.google.protobuf:protoc:${protocVersion}" }
+    plugins {
+        grpc { artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}" }
+        custom {
+            if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
+                path = "${rootDir}\\custom-protoc-plugin\\build\\install\\custom-protoc-plugin\\bin\\custom-protoc-plugin.bat"
+            } else {
+                path = "${rootDir}/custom-protoc-plugin/build/install/custom-protoc-plugin/bin/custom-protoc-plugin"
+            }
+        }
+    }
+
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+            custom {
+                outputSubDir = 'java'
+            }
+        }
+
+        all()*.dependsOn ':custom-protoc-plugin:installDist'
+    }
+}

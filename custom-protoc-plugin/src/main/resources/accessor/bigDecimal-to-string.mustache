@@ -1,0 +1,6 @@
+public Builder {{auxSetter}}(@javax.annotation.Nonnull {{auxType}} value) {
+  if(value != null) {
+    return {{parentSetter}}(value.toString());
+  }
+  return {{parentSetter}}("");
+}

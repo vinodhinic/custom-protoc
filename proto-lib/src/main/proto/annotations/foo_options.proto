@@ -1,0 +1,64 @@
+syntax = "proto2";
+
+import "google/protobuf/descriptor.proto";
+option java_package = "com.foo.proto.codegen";
+
+package foo;
+
+// The getter method name to be generated for the field that is annotated with this option.
+// If it is same as the getter of the field itself, compiler will throw error.
+// Eg :
+// string price = 1 [(foo.java_accessor).big_decimal_accessor = "getPrice"];
+// This is clashing with the getter of the original field itself. Hence wrong.
+
+message FooJavaAccessorOptions {
+
+ // only fields of type string and google.protobuf.StringValue are supported
+  optional string big_decimal_accessor = 1;
+  optional bool big_decimal = 2;
+
+ // only fields of type com.foo.types.LocalDate are supported
+  optional string local_date_accessor = 3;
+  optional bool local_date = 4;
+
+ // only fields of type google.protobuf.Timestamp are supported
+  optional string instant_accessor = 5;
+  optional bool instant = 6;
+
+}
+
+enum FooInterface {
+    FI_UNKNOWN = 0;
+    FI_KAFKA_EVENT = 1;
+}
+
+enum KafkaEventField {
+    KE_UNKNOWN = 0;
+    KE_EVENT_TIME = 1;
+}
+
+message KafkaEventFields {
+    repeated KafkaEventField values = 1;
+}
+
+message FooKafkaEventInterfaceOptions {
+    optional KafkaEventFields fields = 1;
+    optional KafkaEventField field = 2;
+}
+
+extend google.protobuf.FieldOptions {
+   optional FooJavaAccessorOptions java_accessor = 1036;
+   optional FooKafkaEventInterfaceOptions kafka_event = 1037;
+}
+
+message FooInterfaces {
+    repeated FooInterface values = 1;
+}
+
+message FooInterfaceOptions {
+    optional FooInterfaces interfaces = 1;
+}
+
+extend google.protobuf.MessageOptions {
+   optional FooInterfaceOptions foo_interface = 1238;
+}

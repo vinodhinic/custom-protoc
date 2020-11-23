@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "com.foo.javaPackage";
+
+package com.foo.protoPackage;
+
+import "annotations/foo_options.proto";
+import "types/local_date.proto";
+
+message Birth {
+    LocalDate birthDate = 1 [(.foo.java_accessor).local_date = true];
+}
+
+message Death {
+    LocalDate deathDate = 1 [(.foo.java_accessor).local_date_accessor = "getJavaLocalDateDeath"];
+}
+
+message TestContract {
+    Birth birth = 1;
+    Death death = 2;
+}

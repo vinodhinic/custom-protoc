@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package com.foo.protoPackage;
+
+import "annotations/foo_options.proto";
+import "google/protobuf/wrappers.proto";
+
+message TestOrder {
+    google.protobuf.StringValue final_price = 1 [(.foo.java_accessor).big_decimal_accessor = "getBigDecimalFinalPrice"];
+}

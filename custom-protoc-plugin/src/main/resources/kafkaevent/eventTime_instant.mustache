@@ -1,0 +1,11 @@
+
+private java.time.Instant {{newJavaEventTimeFieldName}} = null;
+
+@Override
+public @javax.annotation.Nonnull java.time.Instant eventTime() {
+    if({{newJavaEventTimeFieldName}} == null) {
+        {{newJavaEventTimeFieldName}} = java.time.Instant.ofEpochSecond({{eventTimeFieldAccessor}}().getSeconds(),
+        {{eventTimeFieldAccessor}}().getNanos());
+    }
+    return {{newJavaEventTimeFieldName}};
+}

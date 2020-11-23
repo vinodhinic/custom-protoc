@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package com.foo.protoPackage;
+
+import "annotations/foo_options.proto";
+
+import "google/protobuf/timestamp.proto";
+
+message TestSnapExpiration {
+    google.protobuf.Timestamp expired_at = 1;
+}
+
+message TestSnapCreation {
+    google.protobuf.Timestamp created_at = 2;
+}

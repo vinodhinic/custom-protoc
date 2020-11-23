@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package com.foo.protoPackage;
+
+import "google/protobuf/timestamp.proto";
+
+message TestEvent {
+    string event_id = 1;
+    google.protobuf.Timestamp eventTime = 2;
+}
+
+message TestAdEvent {
+    TestEvent ad_event = 1;
+}

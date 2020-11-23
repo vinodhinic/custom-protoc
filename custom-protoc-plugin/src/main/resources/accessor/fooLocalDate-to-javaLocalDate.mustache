@@ -1,0 +1,15 @@
+
+private java.time.LocalDate {{auxField}} = null;
+public @javax.annotation.Nullable java.time.LocalDate {{auxGetter}}() {
+  if(this.{{auxField}} == null && {{parentHas}}() ) {
+    this.{{auxField}} = java.time.LocalDate.of({{parentGetter}}().getYear(),
+    {{parentGetter}}().getMonth(),
+     {{parentGetter}}().getDayOfMonth());
+  }
+  return this.{{auxField}};
+}
+
+public boolean {{auxHas}}() {
+    return {{parentHas}}();
+}
+

@@ -1,0 +1,30 @@
+apply plugin: 'com.google.protobuf'
+
+protobuf {
+    protoc { artifact = "com.google.protobuf:protoc:${protocVersion}" }
+    plugins {
+        grpc { artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}" }
+    }
+
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
+
+configurations {
+    protofiles
+}
+
+task copyProtoFiles {
+    group = 'proto'
+    description = 'Copies the proto files into an artifact'
+    outputs.dirs("src/main/proto")
+}
+
+artifacts {
+    protofiles(file('src/main/proto')) {
+        builtBy copyProtoFiles
+    }
+}

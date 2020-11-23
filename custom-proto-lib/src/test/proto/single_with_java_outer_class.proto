@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "com.foo.javaPackage";
+option java_outer_classname = "CompProto";
+package com.foo.protoPackage;
+
+import "annotations/foo_options.proto";
+
+message TestComp {
+    string increment = 1 [(.foo.java_accessor).big_decimal = true ];
+}

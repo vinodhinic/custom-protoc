@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_package = "com.foo.javaPackage";
+option java_outer_classname = "TransactionsProto";
+option java_multiple_files = true;
+
+package com.foo.protoPackage;
+
+import "annotations/foo_options.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+message TestPayment {
+    string payment_id = 1;
+    google.protobuf.Timestamp paid_at = 2 [(.foo.java_accessor).instant_accessor = "getInstantPaymentTime"];
+}
+
+message TestAccount {
+    google.protobuf.StringValue  account_id = 1;
+}

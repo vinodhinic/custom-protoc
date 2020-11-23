@@ -1,0 +1,8 @@
+public Builder {{auxSetter}}(@javax.annotation.Nonnull java.time.Instant value) {
+    if(value != null) {
+        return {{parentSetter}}(
+            com.google.protobuf.Timestamp.newBuilder().setSeconds(value.getEpochSecond()).setNanos(value.getNano()).build()
+        );
+    }
+    return {{parentSetter}}(com.google.protobuf.Timestamp.getDefaultInstance());
+}

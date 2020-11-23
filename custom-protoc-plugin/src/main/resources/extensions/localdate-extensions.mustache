@@ -1,0 +1,19 @@
+    public static LocalDateProto.LocalDate now() {
+      java.time.LocalDate now = java.time.LocalDate.now();
+      return fromJavaLocalDate(now);
+    }
+
+     public static LocalDateProto.LocalDate fromString(String date) {
+        if (date == null || date.trim().equals("")) {
+          return null;
+        }
+        return fromJavaLocalDate(java.time.LocalDate.parse(date, java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd")));
+     }
+
+     public static LocalDateProto.LocalDate fromJavaLocalDate(java.time.LocalDate javaLocalDate) {
+        return LocalDateProto.LocalDate.newBuilder()
+                   .setDayOfMonth(javaLocalDate.getDayOfMonth())
+                   .setYear(javaLocalDate.getYear())
+                   .setMonth(javaLocalDate.getMonth().getValue())
+                   .build();
+     }

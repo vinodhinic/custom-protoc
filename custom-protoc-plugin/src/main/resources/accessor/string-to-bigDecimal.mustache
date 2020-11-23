@@ -1,0 +1,12 @@
+
+private {{auxType}} {{auxField}} = null;
+public @javax.annotation.Nullable {{auxType}} {{auxGetter}}() {
+    if (this.{{auxField}} == null && {{parentGetter}}() != null && !{{parentGetter}}().equals("")) {
+        this.{{auxField}} = new java.math.BigDecimal({{parentGetter}}());
+    }
+    return this.{{auxField}};
+}
+
+public boolean {{auxHas}}() {
+    return {{parentGetter}}() != null && !{{parentGetter}}().equals("");
+}

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option java_package = "com.foo.types";
+option java_outer_classname = "LocalDateProto";
+
+message LocalDate {
+    int32 year = 1;
+    int32 month = 2;
+    int32 dayOfMonth = 3;
+}

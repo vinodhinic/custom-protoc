@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package com.foo.protoPackage;
+import "annotations/foo_options.proto";
+import "types/local_date.proto";
+
+message MessageSameAsFileName {
+   LocalDate birthDate = 1;
+}

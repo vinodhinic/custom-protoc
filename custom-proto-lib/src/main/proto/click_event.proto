@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package com.foo.protoPackage;
+
+import "annotations/foo_options.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "types/local_date.proto";
+
+message ClickEvent {
+    // this proto implements KafkaEvent.java. hence this message level option.
+    option (.foo.foo_interface).interfaces = { values : [ FI_KAFKA_EVENT ] };
+
+    string listing = 1;
+
+    // The custom plugin will automatically generate the java LocalDate accessor for this.
+    LocalDate posted_at = 2;
+
+    // Since this is string, the plugin cannot assume this will be BD convertible. You need to annotate with accessor here.
+    string price = 3 [(.foo.java_accessor).big_decimal_accessor = "getBdListingPrice"];
+
+    // Timestamps will also be automatically provided an instant accessor. I have just added the annotation for example usage.
+    // Also, I am asking this field to be used to for the kafka's event time interface implementation.
+    google.protobuf.Timestamp clicked_at = 4 [
+                                                (.foo.java_accessor).instant = true,
+                                                (.foo.kafka_event).field = KE_EVENT_TIME
+                                             ];
+}

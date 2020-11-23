@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "com.foo.javaPackage";
+option java_multiple_files = true;
+
+package com.foo.protoPackage;
+
+import "annotations/foo_options.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+
+message TestEndOfSeasonSale {
+    google.protobuf.StringValue discount = 1 [(.foo.java_accessor).big_decimal = true];
+}
+
+message TestFlashSale {
+    google.protobuf.StringValue discount = 1 [(.foo.java_accessor).big_decimal_accessor = "getBdDiscount"];
+}

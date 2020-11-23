@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package com.foo.protoPackage;
+
+import "annotations/foo_options.proto";
+
+message TestOrderPrice {
+    string price = 1 [(.foo.java_accessor).big_decimal_accessor = "getBigDecimalOriginalPrice"];
+}
+
+message TestTax {
+    string price = 1 [(.foo.java_accessor).big_decimal_accessor = "getBigDecimalTax"];
+}
+
+message TestPizzaOrder {
+    TestOrderPrice price = 1;
+    TestTax tax = 2;
+}

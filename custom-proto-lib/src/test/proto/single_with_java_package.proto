@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "com.foo.javaPackage";
+
+package com.foo.protoPackage;
+
+import "annotations/foo_options.proto";
+
+message TestListing {
+    string price = 1 [(.foo.java_accessor).big_decimal = true];
+}

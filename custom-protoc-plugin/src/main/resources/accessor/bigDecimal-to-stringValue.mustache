@@ -1,0 +1,8 @@
+public Builder {{auxSetter}}(@javax.annotation.Nonnull {{auxType}} value) {
+  if(value != null) {
+    return {{parentSetter}}(
+        com.google.protobuf.StringValue.newBuilder().setValue(value.toString()).build()
+    );
+  }
+  return {{parentSetter}}(com.google.protobuf.StringValue.getDefaultInstance());
+}

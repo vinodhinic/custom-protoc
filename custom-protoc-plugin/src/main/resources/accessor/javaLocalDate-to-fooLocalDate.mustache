@@ -1,0 +1,13 @@
+
+public Builder {{auxSetter}}(@javax.annotation.Nonnull java.time.LocalDate value) {
+  if(value != null) {
+    return {{parentSetter}}(
+        com.foo.types.LocalDateProto.LocalDate.newBuilder()
+            .setDayOfMonth(value.getDayOfMonth())
+            .setMonth(value.getMonthValue())
+            .setYear(value.getYear())
+            .build()
+    );
+  }
+  return {{parentSetter}}(com.foo.types.LocalDateProto.LocalDate.getDefaultInstance());
+}
