@@ -130,8 +130,8 @@ To enable custom protoc support in gradle, first, try to understand how the prot
  - followed by proto files - the proto files that are to be compiled
  
  ```
-    /home/vinodhini/IdeaProjects/custom-protoc > protoc --proto_path=src/main/proto/ --java_out=src/main/java/ \
-    src/main/proto/annotations/foo_options.proto src/main/proto/many* src/main/proto/multiple* src/main/proto/simple_hello_world.proto src/main/proto/single* 
+/home/vinodhini/IdeaProjects/custom-protoc > protoc --proto_path=src/main/proto/ --java_out=src/main/java/ \
+src/main/proto/annotations/foo_options.proto src/main/proto/many* src/main/proto/multiple* src/main/proto/simple_hello_world.proto src/main/proto/single* 
  ```
 
 ## With the custom plugin 
@@ -144,10 +144,10 @@ The command interprets the plugin name as `custom` since you have given `--plugi
 for this plugin as `--batman_out`. This out directory will have the custom codegen applied on top of the protoc's Java codegen. Like this, you can keep chaining any number of plugins you want. 
 
 ```
-    /home/vinodhini/IdeaProjects/custom-protoc > protoc --proto_path=src/main/proto/ --java_out=src/main/java/ \
-    --plugin=protoc-gen-custom=custom-protoc-plugin/build/install/custom-protoc/bin/custom-protoc-plugin  \
-    --custom_out=src/main/java \
-    src/main/proto/annotations/foo_options.proto src/main/proto/many* src/main/proto/multiple* src/main/proto/simple_hello_world.proto src/main/proto/single*
+/home/vinodhini/IdeaProjects/custom-protoc > protoc --proto_path=src/main/proto/ --java_out=src/main/java/ \
+--plugin=protoc-gen-custom=custom-protoc-plugin/build/install/custom-protoc/bin/custom-protoc-plugin  \
+--custom_out=src/main/java \
+src/main/proto/annotations/foo_options.proto src/main/proto/many* src/main/proto/multiple* src/main/proto/simple_hello_world.proto src/main/proto/single*
 ```
 
 ## Structure of the modules 
@@ -188,7 +188,7 @@ And, if you use `protobuf` then it means you want the .proto files in the `proto
 
 ```
 A.gradle
-    project(path: ':proto-lib', configuration: 'protofiles')
+    protobuf project(path: ':proto-lib', configuration: 'protofiles')
 ```
 
 I have exposed a configuration called protofiles at [proto-lib's gradle](/proto-lib/proto-lib.gradle) which restricts the list to only the .proto files present in `src/main/proto`
